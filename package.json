@@ -1,17 +1,16 @@
 {
-	"name": "tooltip-map",
+	"name": "interactive-map-clean",
 	"private": true,
 	"version": "0.0.1",
 	"type": "module",
 	"scripts": {
-		"dev": "svelte-kit dev",
-		"build": "svelte-kit build",
-		"preview": "svelte-kit preview",
-		"prepare": "svelte-kit sync",
-		"deploy": "npm run build && git subtree push --prefix build origin gh-pages"
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "vite preview",
+		"prepare": "svelte-kit sync || echo ''"
 	},
 	"devDependencies": {
-		"@sveltejs/adapter-static": "^3.0.9",
+		"@sveltejs/adapter-auto": "^6.0.0",
 		"@sveltejs/kit": "^2.22.0",
 		"@sveltejs/vite-plugin-svelte": "^6.0.0",
 		"svelte": "^5.0.0",
