@@ -1,38 +1,36 @@
-# sv
+# Check out the live demo here - [interactive map](https://proy02.github.io/interactive_map/)
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+# How the map was created
 
-## Creating a project
+For visualising maps over browsers, the whole workflow gets extremely messy since you have to convert from geojson to topojson!
+To avoid the whole workflow, I integrated QGIS and Mapshaper 
 
-If you're seeing this, you've probably already done this step. Congrats!
+## How the two softwares were integrated
 
-```sh
-# create a new project in the current directory
-npx sv create
-
-# create a new project in my-app
-npx sv create my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+First, the projection - I love the Sphere Molliweide projection (ESRI 53009) so I exported it as a geojson with the projection of my choice. In Mapshaper CLI, I gave this code - 
 
 ```sh
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+mapshaper ~/Downloads/FireCount.geojson \
+	-proj +proj=moll \
+	-classify field=NUMPOINTS \
+	 colors='#f6f0eb,#f9b282,#e34a33,#b0175a,#6a176e,#2c105c,#000004' \
+	 breaks=0,100,500,1000,5000,10000,20000,40000 \
+	-style stroke=white stroke-width=0.3 \
+	-o format=svg id-field=NAME ~/Desktop/world_fire_1.svg
 ```
 
-## Building
+## Why I chose QGIS and Mapshaper CLI
 
-To create a production version of your app:
+So, I figured, with SVGs, if you wnat full control then all you gotta do is attach ids and call them during development.
+The whole QGIS + Mapshaper workflow enabled that for me by attaching the name of the countries as ids.
+
+
+## Development
+
+Once I had generated the .svg, for web development, I chose Svelte as its lightweight, nimble and perfect for interactive projects. 
 
 ```sh
 npm run build
 ```
-
-You can preview the production build with `npm run preview`.
 
 > To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
