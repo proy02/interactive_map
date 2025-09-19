@@ -29,8 +29,3 @@ The whole QGIS + Mapshaper workflow enabled that for me by attaching the name of
 
 Once I had generated the .svg, for web development, I chose Svelte as its lightweight, nimble and perfect for interactive projects. 
 
-```sh
-npm run build
-```
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
