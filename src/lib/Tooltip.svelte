@@ -2,13 +2,16 @@
     export let x = 0;
     export let y = 0;
     export let content = "";
+    export let visible = false;
+    export let fade = false;
   
     const OFFSET = 12; // distance from cursor
 </script>
   
-{#if content}
+{#if visible && content}
     <div
         class="tooltip"
+        class:fade-out={fade}
         style="
         top: {Math.min(
             y + OFFSET,
@@ -37,5 +40,10 @@
         pointer-events: none;
         z-index: 100;
         white-space: normal;
+        transition: opacity 0.2s ease;
+    }
+
+    .fade-out {
+        opacity: 0;
     }
 </style>

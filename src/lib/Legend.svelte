@@ -45,8 +45,6 @@
     if (n >= 1_000) return (n / 1_000).toFixed(1).replace(/\.0$/, "") + "k";
     return n.toLocaleString();
   }
-
-  $: console.debug("Legend props:", { min, max, legendValue, tickPercent });
 </script>
 
 <div class="legend" role="img" aria-label="Legend">
