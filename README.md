@@ -29,3 +29,23 @@ The whole QGIS + Mapshaper workflow enabled that for me by attaching the name of
 
 Once I had generated the .svg, for web development, I chose Svelte as its lightweight, nimble and perfect for interactive projects. 
 
+
+## How to run the project
+Clone the project and install dependencies:
+```bash
+git clone https://github.com/proy02/washed_away.git
+cd washed_away
+npm install
+```
+
+Start the development server:
+```bash
+npm run dev
+```
+
+Build for production:
+```bash
+npm run build
+npm run preview
+```
+
